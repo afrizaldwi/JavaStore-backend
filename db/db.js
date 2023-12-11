@@ -1,5 +1,14 @@
 import mongoose from "mongoose";
-mongoose.connect("mongodb://localhost:27017/JavaStore", {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-});
+
+try {
+  mongoose.connect(
+    "mongodb+srv://afrizaldwiariz:rajimo567@javastore.or5fcj3.mongodb.net/?retryWrites=true&w=majority",
+    {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    }
+  );
+  console.log("Connect successfully!!!");
+} catch (error) {
+  console.log("Connect failed: " + error);
+}

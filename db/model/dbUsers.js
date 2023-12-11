@@ -15,8 +15,9 @@ const Users = mongoose.model("users", {
   },
 });
 // const product1 = new Users({
-//   username: "afrizal",
-//   password: "rajimo",
+//   username: "admin",
+//   password: "admin",
+//   role: "admin",
 // });
 
 // product1.save().then((data) => console.log(data));

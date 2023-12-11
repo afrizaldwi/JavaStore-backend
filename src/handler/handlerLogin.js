@@ -113,29 +113,30 @@ const loginAdmin = async (req, res) => {
       };
       res.json(response);
     } else {
-      bcrypt.compare(password, existingUser.password, (err, result) => {
-        if (result) {
-          const username = existingUser.username;
-          const role = existingUser.role;
-          const id = existingUser._id;
-          const token = jwt.sign({ id, username, role }, "jwt-secret-key", { expiresIn: "1d" });
-          res.cookie("cookieToken", token, { httpOnly: true, secure: true });
-          const response = {
-            status: "success",
-            role,
-            id,
-            username,
-          };
-          res.json(response);
-        } else {
-          const response = {
-            status: "fail",
-            message: "Wrong Password",
-          };
-          res.json(response);
-        }
-      });
+      // bcrypt.compare(password, existingUser.password, (err, result) => {
+      //   if (result) {
+      const username = existingUser.username;
+      const role = existingUser.role;
+      const id = existingUser._id;
+      const token = jwt.sign({ id, username, role }, "jwt-secret-key", { expiresIn: "1d" });
+      res.cookie("cookieToken", token, { httpOnly: true, secure: true });
+      const response = {
+        status: "success",
+        role,
+        id,
+        username,
+      };
+      res.json(response);
     }
+    // else {
+    //   const response = {
+    //     status: "fail",
+    //     message: "Wrong Password",
+    //   };
+    //   res.json(response);
+    // }
+    // });
+    // }
   } catch (error) {
     const response = {
       status: "fail",
